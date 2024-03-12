@@ -1,0 +1,21 @@
+<div class="container">
+  <select *ngIf="pokemons" name="pokemons" (change)="onChange($event)">
+    <option *ngFor="let pokemon of pokemons.results" [value]="pokemon.name">{{pokemon.name}}</option>
+  </select>
+</div>
+
+<div *ngIf="pokemon" class="pokemon-container">
+  <h2>{{ pokemon.name | uppercase }}</h2>
+  <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}">
+  <div class="info-description">
+    <p>{{ pokemon.species.flavor_text_entries && pokemon.species.flavor_text_entries[0].flavor_text }}</p>
+  </div>
+  <div class="info-tag">
+    <span class="info-label">Height:</span>
+    <span>{{ pokemon.height }}</span>
+  </div>
+  <div class="info-tag">
+    <span class="info-label">Weight:</span>
+    <span>{{ pokemon.weight }}</span>
+  </div>
+</div>
